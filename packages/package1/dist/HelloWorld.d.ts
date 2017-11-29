@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface HelloProps {
     compiler: string;
     framework: string;

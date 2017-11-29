@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pw": "parallel-webpack"
+    "pw": "parallel-webpack --watch",
+    "wp": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +13,7 @@
   "devDependencies": {
     "lerna": "^2.5.1",
     "parallel-webpack": "^2.2.0",
-    "webpack": "^3.8.1",
+    "webpack": "^3.5.1",
     "webpack-merge": "^4.1.1"
   }
 }

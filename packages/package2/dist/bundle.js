@@ -18831,7 +18831,7 @@ exports.Hello = function (props) { return React.createElement("h1", null,
     props.compiler,
     " and ",
     props.framework,
-    "!"); };
+    "!!"); };
 
 
 /***/ }),

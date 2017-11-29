@@ -1,31 +1,28 @@
-module.exports = function(ctx) {
+const path = require("path");
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
+
+module.exports = ctx => {
   return {
     context: ctx,
     node: {
       __filename: true,
       __dirname: true
     },
-
     entry: "./src/index.ts",
     output: {
       filename: "index.js",
       path: __dirname + "/dist"
     },
-
-    // Enable sourcemaps for debugging webpack's output.
     devtool: "source-map",
-
     resolve: {
-      // Add '.ts' and '.tsx' as resolvable extensions.
-      extensions: [".ts", ".tsx", ".js", ".json"]
+      extensions: [".ts", ".tsx", ".js", ".json"],
+      plugins: [new TsConfigPathsPlugin({
+        configFileName: path.resolve(ctx, "./tsconfig.json") 
+      })]
     },
-
     module: {
       rules: [
-        // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-        { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-
-        // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+        { test: /\.tsx?$/, loader: "awesome-typescript-loader", options: {configFileName: path.resolve(ctx, "./tsconfig.json")} },
         { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
       ]
     }
